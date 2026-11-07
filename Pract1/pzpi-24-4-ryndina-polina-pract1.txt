@@ -1,0 +1,254 @@
+Харківський національний університет радіоелектроніки
+Факультет комп’ютерних наук
+Кафедра програмної інженерії
+
+
+ЗВІТ
+до практичного завдання № 1
+з дисципліни «Аналіз та рефакторинг коду»
+на тему: «Правила оформлення програмного коду на мові Python»
+
+
+Виконала                                Перевірив
+ст. гр. ПЗПІ-24-4                       ст. викладач катедри ПІ
+Риндіна Поліна Юріївна                  Сокорчук Ігор Петрович
+
+
+Харків 2026
+
+1 ІСТОРІЯ ЗМІН
+№   Дата        Версія звіту   Опис змін та виправлень
+1   28.10.2026  0.1            Створено розділ «Завдання»
+2   28.10.2026  0.1            Створено розділ «Опис виконаної роботи»
+3   05.11.2026  0.1            Створено розділ «Висновки»
+4   05.11.2026  0.1            Створено розділ «Використані джерела»
+5   06.11.2026  0.1            Створено розділ «Додаток А»
+6   06.11.2026  0.1            Створено розділ «Додаток Б»
+7   06.11.2026  0.1            Створено розділ «Додаток В»
+
+2 ЗАВДАННЯ
+     Основним завданням практичної роботи є вивчення рекомендацій щодо оформлення програм на Python та їх застосування під час роботи з вихідним кодом. У процесі виконання роботи розглянуто правила PEP 8 [1], особливості організації програмних модулів, способи перевірки стилю написання коду, а також підходи до документування та тестування програм. Окрему увагу приділено практичному вдосконаленню коду шляхом рефакторингу [4].
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+     3.1 Правила оформлення коду Python
+     Правила оформлення Python потрібні для того, щоб програмний код мав зрозумілу та послідовну структуру [1, 3]. Коли різні розробники дотримуються одинакових домовленостей, їм простіше працювати з чужими файлами, знаходити помилки та вносити зміни до програми [3]. PEP 8 визначає рекомендації щодо зовнішнього вигляду коду, зокрема відступів, пробілів, назв і розташування окремих елементів [1]. Дотримання цих рекомендацій особливо важливе під час командної розробки [3]. Приклад наведено у додатку В, розділ В.1. Слайд презентації зображено на рисунку Б.1.
+
+     3.2 Структура модуля та розділення імпортів
+     Згідно з PEP 8, імпорти обов'язково групуються у трьох окремих блоках: системні модулі Python, сторонні залежності та локальні компоненти [1]. Поділ імпортів на три групи полегшує роботу з залежностями, запобігає циклічним імпортам та дозволяє розробнику одразу оцінити зовнішні залежності модуля [1, 3]. Два порожні рядки відокремлюють функції та класи верхнього рівня [1]. Приклад наведено у додатку В, розділ В.4. Слайд зображено на рисунку Б.2.
+
+     3.3 Форматування та межі рядків
+     Синтаксичні блоки Python формуються відступами в 4 пробіли [1]. PEP 8 рекомендує обмежувати довжину рядка 79 символами для зручного читання у текстових терміналах [1], проте сучасний автоформатер Black за замовчуванням використовує ліміт у 88 символів, що є компромісом між читабельністю та ефективним використанням сучасних широких моніторів [6]. Для переносу довгих виразів використовуються дужки [1]. Приклад наведено у додатку В, розділ В.1. Слайд зображено на рисунку Б.3.
+
+     3.4 Іменування та константи
+     Для змінних і функцій застосовують snake_case, для класів - PascalCase, а для констант - UPPER_SNAKE_CASE [1]. Використання незрозумілих назв змінних (наприклад, a, b, c) ускладнює розуміння логіки та призводить до помилок при підтримці коду [3]. Усі числові параметри виносяться в іменовані константи [3, 4]. Приклад наведено у додатку В, розділи В.3 та В.5. Слайд зображено на рисунку Б.4.
+
+     3.5 Правила написання коментарів
+     Коментарі повинні пояснювати причину прийняття розробником архітектурного чи алгоритмічного рішення, а не просто перекладати дію коду [1, 3]. Пояснення «що робить код» свідчить про його недостатню виразність [3]. Приклад коментаря, що обґрунтовує паузу при роботі з завантаженим сервером, наведено у додатку В, розділ В.6. Слайд зображено на рисунку Б.5.
+
+     3.6 Документування коду (Docstrings)
+     Документація функції (Docstring) описує її публічний контракт (значення аргументів, результат та винятки за стандартом PEP 257 [2]), тоді як звичайний коментар описує лише конкретні рядки внутрішньої реалізації [2, 3]. Docstrings зберігаються в атрибуті __doc__ і доступні для середовищ розробки [2]. Приклад наведено у додатку В, розділ В.7. Слайд зображено на рисунку Б.6.
+
+     3.7 Інструменти аналізу коду (Linters & Formatters)
+     Для автоматизованої перевірки Python-коду можна використовувати декілька інструментів [6]. Black відповідає за автоматичне зведення коду до єдиного формату [6], Flake8 допомагає знаходити порушення стилістичних рекомендацій [1], а mypy перевіряє відповідність використання типів [1]. Налаштування цих засобів зберігають у файлі pyproject.toml [6]. Приклад наведено у додатку В, розділи В.8 та В.12. Слайд зображено на рисунку Б.7.
+
+     3.8 Модульне тестування з Pytest (AAA)
+     Розподіл тесту за схемою Arrange-Act-Assert (Підготовка - Дія - Перевірка) є стандартною практикою unit-тестування [5]. Спочатку готуються вхідні об'єкти (Arrange), потім викликається функція (Act), після чого перевіряється результат (Assert) [5]. Це ізолює причину падіння тесту при виникненні помилок [5]. Приклади наведено у додатку В, розділи В.9, В.11 та В.13. Слайд зображено на рисунку Б.8.
+
+     3.9 Автоматизація якості коду в CI/CD
+     Інструмент pre-commit автоматично запускає форматування та лінтинг до створення комміту, що запобігає потраплянню некоректного коду у локальний репозиторій [6]. Серверний пайплайн (GitHub Actions) автоматизує перевірку тестів та типів після відправлення змін у спільну гілку, гарантуючи стабільність кодової бази [5, 6]. Приклад команд наведено у додатку В, розділ В.10. Слайд зображено на рисунку Б.9.
+
+     3.10 Приклади коду до та після рефакторингу
+     У розділі В.2 додатка В наведено вихідний код розрахунку вартості доставки товару з незрозумілими назвами змінних w, d, c, відсутністю перевірки від'ємних даних та магічними числами 50, 10, 100, 15, 4. У розділі В.3 наведено відрефакторений код із перевіркою параметрів, винесенням констант BASE_DELIVERY_FEE, LONG_DISTANCE_THRESHOLD_KM та описовими назвами compute_delivery_price [4]. Слайд зображено на рисунку Б.10.
+
+4 ВИСНОВКИ
+     Під час виконання практичної роботи вивчено основні рекомендації стандарту PEP 8 та принципи Clean Code. Отримано практичні навички форматування коду за допомогою Black, виконання статичного аналізу інструментами Flake8 і mypy, а також написання модульних тестів у фреймворку pytest.
+
+5 ВИКОРИСТАНІ ДЖЕРЕЛА
+     1. PEP 8 — Style Guide for Python Code. Python.org. URL: https://peps.python.org/pep-0008/ (date of access: 10.10.2026).
+     2. PEP 257 — Docstring Conventions. Python.org. URL: https://peps.python.org/pep-0257/ (date of access: 10.10.2026).
+     3. Martin R. Clean Code: A Handbook of Agile Software Craftsmanship. Pearson Education, 2008. 464 p.
+     4. Fowler M. Refactoring: Improving the Design of Existing Code. Addison-Wesley, 2018. 448 p.
+     5. Pytest Documentation: Full testing framework guide. URL: https://docs.pytest.org/ (date of access: 10.10.2026).
+     6. Black: The Uncompromising Code Formatter. URL: https://black.readthedocs.io/ (date of access: 10.10.2026).
+
+ДОДАТОК А
+Відеозапис
+     Відеозапис доповіді: https://youtu.be/tYej9kpVbPg
+     Хронологічний опис відеозапису:
+     00:00 - Слайд 2. Вступ: Значення правильного оформлення коду
+     01:05 - Слайд 3. Загальні правила оформлення коду: Іменування змінних та функцій
+     02:11 - Слайд 4. Загальні правила оформлення коду: Коментарі та структура
+     03:19 - Слайд 5. Оформлення функцій та методів
+     04:12 - Слайд 6. Форматування коду: Відступи, дужки та довжина рядків
+     05:16 - Слайд 7. Приклад коду до та після застосування правил (Аналіз)
+     06:16 - Слайд 8. Приклад коду до та після застосування правил (Рефакторинг)
+     07:15 - Слайд 9. Оформлення файлів та структури проєкту
+     08:11 - Слайд 10. Інструменти та автоматизація контролю якості
+     09:12 - Слайд 11. Висновки
+     10:00 - Слайд 12. Список використаних джерел
+
+ДОДАТОК Б
+Слайди презентації
+
+Рисунок Б.1 – Слайд 1. Правила оформлення програмного коду на мові Python
+
+Рисунок Б.2 – Слайд 2. Вступ: Значення правильного оформлення коду
+
+Рисунок Б.3 – Слайд 3. Загальні правила оформлення коду: Іменування змінних та функцій
+
+Рисунок Б.4 – Слайд 4. Загальні правила оформлення коду: Коментарі та структура
+
+Рисунок Б.5 – Слайд 5. Оформлення функцій та методів
+
+Рисунок Б.6 – Слайд 6. Форматування коду: Відступи, дужки та довжина рядків
+
+Рисунок Б.7 – Слайд 7. Приклад коду до та після застосування правил (Аналіз)
+
+Рисунок Б.8 – Слайд 8. Приклад коду до та після застосування правил (Рефакторинг)
+
+Рисунок Б.9 – Слайд 9. Оформлення файлів та структури проєкту
+
+Рисунок Б.10 – Слайд 10. Інструменти та автоматизація контролю якості
+
+Рисунок Б.11 – Слайд 11. Висновки
+
+Рисунок Б.12 – Слайд 12. Список використаних джерел
+
+ДОДАТОК В
+Програмний код
+В.1 ЕТАЛОННИЙ ПРИКЛАД ОФОРМЛЕННЯ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L7-L12
+ 1  def calculate_shipping_cost(weight_kg: float, distance_km: float) -> float:
+ 2      """Обчислює вартість доставки товару на основі ваги та відстані."""
+ 3      if weight_kg <= 0 or distance_km <= 0:
+ 4          raise ValueError("Вага та відстань повинні бути більшими за нуль.")
+ 5      base_rate = 50.0
+ 6      return base_rate + (weight_kg * 12.5) + (distance_km * 3.0)
+
+В.2 ПРИКЛАД ПРОГРАМНОГО КОДУ ДО РЕФАКТОРИНҐУ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L15-L27
+ 1  def calc(w, d):
+ 2      c = 50  # base cost
+ 3      if w > 10:
+ 4          c = c + w * 15
+ 5      else:
+ 6          c = c + w * 10
+ 7      if d > 100:
+ 8          c = c + d * 4
+ 9      else:
+ 10         c = c + d * 2
+ 11     return c
+
+В.3 ПРИКЛАД ПРОГРАМНОГО КОДУ ПІСЛЯ РЕФАКТОРИНҐУ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L30-L55
+ 1  BASE_DELIVERY_FEE: float = 50.0
+ 2  HEAVY_WEIGHT_THRESHOLD_KG: float = 10.0
+ 3  LONG_DISTANCE_THRESHOLD_KM: float = 100.0
+ 4  HIGH_WEIGHT_RATE: float = 15.0
+ 5  STANDARD_WEIGHT_RATE: float = 10.0
+ 6  LONG_DISTANCE_RATE: float = 4.0
+ 7  STANDARD_DISTANCE_RATE: float = 2.0
+ 8  
+ 9  def compute_delivery_price(weight_kg: float, distance_km: float) -> float:
+ 10     """Обчислює підсумкову вартість доставки з урахуванням констант тарифів."""
+ 11     if weight_kg <= 0 or distance_km <= 0:
+ 12         raise ValueError("Параметри ваги та відстані мають бути додатними.")
+ 13     weight_rate = HIGH_WEIGHT_RATE if weight_kg > HEAVY_WEIGHT_THRESHOLD_KG else STANDARD_WEIGHT_RATE
+ 14     distance_rate = LONG_DISTANCE_RATE if distance_km > LONG_DISTANCE_THRESHOLD_KM else STANDARD_DISTANCE_RATE
+ 15     return BASE_DELIVERY_FEE + (weight_kg * weight_rate) + (distance_km * distance_rate)
+
+В.4 СТРУКТУРА ІМПОРТІВ ТА МОДУЛІВ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L58-L61
+ 1  class UserSession:
+ 2      def __init__(self, user_id: int, token: str) -> None:
+ 3          self.user_id = user_id
+ 4          self.token = token
+
+В.5 ІМЕНУВАННЯ ТА КОНСТАНТИ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L64-L72
+ 1  MAX_LOGIN_ATTEMPTS: int = 3
+ 2  
+ 3  class SecurityGuard:
+ 4      def __init__(self, failed_attempts: int) -> None:
+ 5          self._failed_attempts = failed_attempts
+ 6  
+ 7      @property
+ 8      def is_blocked(self) -> bool:
+ 9          return self._failed_attempts >= MAX_LOGIN_ATTEMPTS
+
+В.6 КОМЕНТАР ПРО ПРИЧИНУ, А НЕ ПРО ДІЮ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L75-L87
+ 1  class DatabaseConnector:
+ 2      def __init__(self) -> None:
+ 3          self.connected = False
+ 4  
+ 5      def connect(self) -> None:
+ 6          # Неправильно: connect to db
+ 7          # self.connected = True
+ 8  
+ 9          # Правильно: сервер бази даних потребує паузи в 500мс між запитами
+ 10         # через обмеження пулу з'єднань на хостингу.
+ 11         time.sleep(0.5)
+ 12         self.connected = True
+
+В.7 DOCSTRINGS (ДОКУМЕНТУВАННЯ МЕТОДУ ЗА GOOGLE STYLE)
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L90-L103
+ 1  def evaluate_average_score(scores: List[float]) -> float:
+ 2      """Обчислює середній балл студентської групи.
+ 3  
+ 4      Args:
+ 5          scores (List[float]): Список балів студентів.
+ 6  
+ 7      Returns:
+ 8          float: Середнє арифметичне значення.
+ 9  
+ 10     Raises:
+ 11         ValueError: Якщо список балів порожній.
+ 12     """
+ 13     if not scores:
+ 14         raise ValueError("Список оцінок не може бути порожнім.")
+ 15     return sum(scores) / len(scores)
+
+В.8 НАЛАШТУВАННЯ ТУЛІНГУ (.pyproject.toml)
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L106-L111
+ 1  # [tool.black]
+ 2  # line-length = 88
+ 3  # target-version = ['py310']
+ 4  # [tool.flake8]
+ 5  # max-line-length = 88
+
+В.9 МОДУЛЬНЕ ТЕСТУВАННЯ З PYTEST (ARRANGE-ACT-ASSERT)
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L114-L123
+ 1  def test_evaluate_average_score_valid_list():
+ 2      # Arrange
+ 3      test_scores = [90.0, 80.0, 100.0]
+ 4      # Act
+ 5      result = evaluate_average_score(test_scores)
+ 6      # Assert
+ 7      assert result == 90.0
+
+В.10 АВТОМАТИЗАЦІЯ ПЕРЕВІРОК У КОМАНДНОМУ РЯДКУ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L126-L128
+ 1  # black code_examples.py
+ 2  # flake8 --max-line-length=88 code_examples.py
+
+В.11 ШОВ ТА ЗАЛЕЖНОСТІ ДЛЯ ТЕСТУВАННЯ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L131-L140
+ 1  class NotificationService:
+ 2      def is_service_available(self) -> bool:
+ 3          return True
+ 4  
+ 5  def send_user_alert(user_email: str, notifier: NotificationService) -> bool:
+ 6      if notifier.is_service_available():
+ 7          return True
+ 8      return False
+
+В.12 КОНФІГУРАЦІЯ LINTING/TYPING ПІД ЧАС ЗБІРКИ
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L143-L144
+ 1  # mypy --strict code_examples.py
+
+В.13 ПАРАМЕТРИЗОВАНИЙ ТЕСТ В PYTEST
+GitHub репозиторій: https://github.com/krysleyy/ark-pzpi-24-4-ryndina-polina/blob/main/Pract1/pzpi-24-4-ryndina-polina-pract1/code_examples.py#L147-L150
+ 1  # @pytest.mark.parametrize("scores, expected", [([10, 20], 15.0), ([100], 100.0)])
+ 2  # def test_average_parametrized(scores, expected):
+ 3  #     assert evaluate_average_score(scores) == expected
