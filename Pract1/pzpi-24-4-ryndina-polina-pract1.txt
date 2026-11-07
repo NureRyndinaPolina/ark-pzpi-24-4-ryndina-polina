@@ -64,12 +64,12 @@
      Під час виконання практичної роботи вивчено основні рекомендації стандарту PEP 8 та принципи Clean Code. Отримано практичні навички форматування коду за допомогою Black, виконання статичного аналізу інструментами Flake8 і mypy, а також написання модульних тестів у фреймворку pytest.
 
 5 ВИКОРИСТАНІ ДЖЕРЕЛА
-     1. PEP 8 — Style Guide for Python Code. Python.org. URL: https://peps.python.org/pep-0008/ (date of access: 10.10.2026).
-     2. PEP 257 — Docstring Conventions. Python.org. URL: https://peps.python.org/pep-0257/ (date of access: 10.10.2026).
+     1. PEP 8 — Style Guide for Python Code. Python.org. URL: https://peps.python.org/pep-0008/ (date of access: 28.10.2026).
+     2. PEP 257 — Docstring Conventions. Python.org. URL: https://peps.python.org/pep-0257/ (date of access: 05.11.2026).
      3. Martin R. Clean Code: A Handbook of Agile Software Craftsmanship. Pearson Education, 2008. 464 p.
      4. Fowler M. Refactoring: Improving the Design of Existing Code. Addison-Wesley, 2018. 448 p.
-     5. Pytest Documentation: Full testing framework guide. URL: https://docs.pytest.org/ (date of access: 10.10.2026).
-     6. Black: The Uncompromising Code Formatter. URL: https://black.readthedocs.io/ (date of access: 10.10.2026).
+     5. Pytest Documentation: Full testing framework guide. URL: https://docs.pytest.org/ (date of access: 05.11.2026).
+     6. Black: The Uncompromising Code Formatter. URL: https://black.readthedocs.io/ (date of access: 07.11.2026).
 
 ДОДАТОК А
 Відеозапис
